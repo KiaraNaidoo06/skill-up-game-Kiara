@@ -1,79 +1,114 @@
+// .tic-tac-toe {
+//     text-align: center;
+//   }
+  
+//   .board {
+//     display: grid;
+//     grid-template-columns: repeat(3, 100px);
+//     grid-template-rows: repeat(3, 100px);
+//     gap: 5px;
+//     justify-content: center;
+//   }
+  
+//   .cell {
+//     width: 100px;
+//     height: 100px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     font-size: 24px;
+//     background-color: #f0f0f0;
+//     border: 1px solid #ddd;
+//     cursor: pointer;
+//   }
+  
+//   .cell:hover {
+//     background-color: #e0e0e0;
+//   }
+  
+//   .winner {
+//     margin-top: 20px;
+//   }
+  
+//   button {
+//     margin-top: 10px;
+//   }
 .tic-tac-toe {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    .heading {
-        align-self: center;
-    }
+  .heading {
+      align-self: center;
+  }
 
-    .details {
-        display: flex;
-        flex-direction: row;
-    }
+  .details {
+      display: flex;
+      flex-direction: row;
+  }
 
-    .status {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
+  .status {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+  }
 
-    .winner {
-        font-size: 1.5rem;
-        margin: 0 0 20px 20px;
-    }
+  .winner {
+      font-size: 1.5rem;
+      margin: 0 0 20px 20px;
+  }
 
-    .reset-button {
-        width: fit-content;
-        align-self: center;
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        background-color: #FF5722;
-        color: #FFFFFF;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  .reset-button {
+      width: fit-content;
+      align-self: center;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #FF5722;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
 
-    .reset-button:hover {
-        background-color: #E64A19;
-    }
+  .reset-button:hover {
+      background-color: #E64A19;
+  }
 
-    .board {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        max-width: 200px;
-        margin: 0 auto;
-        padding: 10px;
-        border: 4px solid transparent;
-        background-image: var(--red-to-pink-to-purple-horizontal-gradient);
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
-    }
+  .board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 200px;
+      margin: 0 auto;
+      padding: 10px;
+      border: 4px solid transparent;
+      background-image: var(--red-to-pink-to-purple-horizontal-gradient);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+  }
 
-    .square {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-        font-weight: bold;
-        background-color: #f1f1f1;
-        border: 2px solid #333;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+  .square {
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      font-weight: bold;
+      background-color: #f1f1f1;
+      border: 2px solid #333;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
 
-    .square:disabled {
-        background-color: #BDBDBD;
-        color: #757575;
-        cursor: not-allowed;
-    }
+  .square:disabled {
+      background-color: #BDBDBD;
+      color: #757575;
+      cursor: not-allowed;
+  }
 
-    .square:hover:not(:disabled) {
-        background-color: #EEEEEE;
-    }
+  .square:hover:not(:disabled) {
+      background-color: #EEEEEE;
+  }
 
-    .row {
-        display: contents;
-    }
+  .row {
+      display: contents;
+  }
 }

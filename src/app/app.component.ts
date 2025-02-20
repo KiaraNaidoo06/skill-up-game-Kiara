@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root', //component
   standalone: true,
   imports: [RouterOutlet, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Up Skill Game';
-  
+  title = 'skill-up-game-KIARA';
 }

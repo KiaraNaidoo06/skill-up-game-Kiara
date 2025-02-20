@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>🎯 New Year's Resolutions</h2>
+    
+    <div class="input-group">
+      <input [(ngModel)]="newItem" placeholder="Enter your resolution..." />
+      <button (click)="addItem()">Add</button>
+      <button (click)="clearItems()">Clear</button>
+    </div>
+    
+    <ul>
+      <li *ngFor="let item of itemList; let i = index">
+        @if (item.editable){
+          <input [(ngModel)]="item.resolution"/>
+          <button (click)="editResolution(i)">Save</button>
+        }
+        @else {
+          {{ item.resolution }}
+          <button (click)="makeEditable(i)">Edit</button>
+        }
+        <button (click)="deleteItem(i)">❌</button>
+      </li>
+    </ul>
+  </div>

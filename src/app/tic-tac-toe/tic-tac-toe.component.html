@@ -1,3 +1,16 @@
+<!-- <p>Tic-Tac-Toe works!</p>
+<div class="tic-tac-toe">
+    <div class="board">
+      <div *ngFor="let cell of board; let i = index" class="cell" (click)="nextPlayer(i)">
+        {{ cell }}
+      </div>
+    </div>
+    <div *ngIf="winner" class="winner">
+      <h3>Player {{ winner }} Wins!</h3>
+    </div>
+    <button (click)="resetGame()">Restart Game</button>
+  </div>
+   -->
 
 <div class="tic-tac-toe">
   <h2 class="heading">Tic Tac Toe</h2>
@@ -16,7 +29,7 @@
   </div>
     <section class="board">
       <div class="row" *ngFor="let rowIndex of [0, 1, 2]">
-        <button *ngFor="let colIndex of [0, 1, 2]" class="square" (click)="handleClick(rowIndex * 3 + colIndex)"
+        <button *ngFor="let colIndex of [0, 1, 2]" class="square" (click)="nextPlayer(rowIndex * 3 + colIndex)"
           [disabled]="board[rowIndex * 3 + colIndex] || winner" [ngStyle]="{
                   'color': board[rowIndex * 3 + colIndex] === 'X' ? '#0000FF' : 
                            (board[rowIndex * 3 + colIndex] === 'O' ? '#FF0000' : '#333')
@@ -25,5 +38,10 @@
         </button>
       </div>
     </section>
+
+    <div *ngIf="gameHistory.length > 0">
+      <p>Game History:<span *ngFor="let item of gameHistory">{{item}},</span></p>
+    </div>
+
     <button (click)="resetGame()" class="reset-button">Reset</button>
   </div>

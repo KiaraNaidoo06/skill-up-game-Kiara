@@ -13,6 +13,7 @@ interface Card {
   templateUrl: './black-jack.component.html',
   styleUrl: './black-jack.component.scss'
 })
+
 export class BlackJackComponent {
   playerCards: Card[] = [];
   dealerCards: Card[] = [];

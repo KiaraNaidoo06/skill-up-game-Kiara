@@ -1,53 +1,64 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Component } from '@angular/core';
+import { GameHistoryService } from '../../services/game-history-service';
 
 @Component({
-  selector: 'app-tic-tac-toe',
+  selector: 'app-tic-tac-toe', //name of component
   standalone: true,
   imports: [CommonModule],
   templateUrl: './tic-tac-toe.component.html',
   styleUrl: './tic-tac-toe.component.scss'
 })
-export class TicTacToeComponent {
-  public board: (string | null)[] = Array(9).fill(null);
-  public currentPlayer: string = 'X';
-  public winner: string | null = null;
 
-  private readonly winConditions: number[][] = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-    [0, 4, 8], [2, 4, 6]  // Diagonals
-  ];
+export class TicTacToeComponent { //private variables will have an _ under it
+  board: string[] = Array(9).fill('');
+  currentPlayer: string = "X";
+  winner: string | null = null;
+  gameHistory: string[] = [];
 
-  ngOnInit(): void {
-    this.resetGame();
+  constructor(private gameHistoryService:GameHistoryService){
+
   }
 
-  public handleClick(index: number): void {
-    if (!this.board[index] && !this.winner) {
-      this.board[index] = this.currentPlayer;
-
-      if (this.checkWinner()) {
-        this.winner = this.currentPlayer;
-      } else {
-        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+  resetGame(): void {
+    if (this.winner) {
+      this.gameHistory.push(this.winner);
+    }
+    this.board.fill('');
+    this.currentPlayer = 'X';
+    this.winner = null;
+  }
+  
+  nextPlayer(i: number): void {
+    if (!this.board[i] && !this.winner) {
+      this.board[i] = this.currentPlayer;
+    
+      if (this.checkWin() == true) {
+      this.winner = this.currentPlayer;
+    } else if (this.checkWin() == false) {
+      if (this.currentPlayer == "X") {
+        this.currentPlayer = "O";
+      } else if (this.currentPlayer == "O") {
+        this.currentPlayer = "X";
       }
     }
   }
+  }
 
-  private checkWinner(): boolean {
-    for (const [a, b, c] of this.winConditions) {
-      if (this.board[a] && this.board[a] === this.board[b] && this.board[a] === this.board[c]) {
-        return true;
+  checkWin(): boolean {
+    const winningConditions = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
+    for (const [a, b, c] of winningConditions) {
+      if (this.board[a] == "X" && this.board[b] == "X" && this.board[c] == "X" || this.board[a] == "O" && this.board[b] == "O" && this.board[c] == "O") {
+        this.winner = this.board[a];
+        return true; 
       }
     }
     return false;
   }
 
-  public resetGame(): void {
-    this.board = Array(9).fill(null);
-    this.currentPlayer = 'X';
-    this.winner = null;
-  }
 }
+
